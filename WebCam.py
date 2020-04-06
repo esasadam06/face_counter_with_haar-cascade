@@ -1,10 +1,6 @@
-
-
 import cv2
 face_cascade = cv2.CascadeClassifier('haarcascade-frontalface-default.xml')
 people=0
-
-
 def detect(frame):
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
@@ -15,8 +11,6 @@ def detect(frame):
         people = people + 1
     cv2.putText(frame, 'Detected People :' + str(people) + " ", (35, 35), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1,cv2.LINE_AA)
     return frame
-
-
 video_capture = cv2.VideoCapture(0)
 while True:
     _, frame = video_capture.read()
